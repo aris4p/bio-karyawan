@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
             $table->string('nama_perusahaan')->nullable();
             $table->string('posisi_terakhir')->nullable();
             $table->string('pendapatan_terakhir')->nullable();
             $table->integer('tahun')->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

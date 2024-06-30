@@ -15,7 +15,7 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
+
 
         $validate = $request->validate([
             'posisi' => 'required',
@@ -29,15 +29,24 @@ class EmployeeController extends Controller
         if($employee){
             $employee->posisi = $request->posisi;
             $employee->nama = $request->nama;
-            $employee->nama = $request->nama;
-            $employee->nama = $request->nama;
-            $employee->nama = $request->nama;
-            $employee->nama = $request->nama;
-            $employee->nama = $request->nama;
+            $employee->noktp = $request->noktp;
+            $employee->tempat = $request->tempat;
+            $employee->tgllahir = $request->tgllahir;
+            $employee->jenkel = $request->gender;
+            $employee->agama = $request->agama;
+            $employee->goldar = $request->goldar;
+            $employee->email = $request->email;
+            $employee->notelpon = $request->notelpon;
+            $employee->alamat_ktp = $request->alamatktp;
+            $employee->alamat_tinggal = $request->alamattinggal;
+            $employee->notelpon_tdkt = $request->orgtrdkt;
+            $employee->skill = $request->skill;
+            $employee->persetujuan = $request->persetujuan;
+            $employee->penghasilan = $request->penghasilan;
             $employee->save();
-            return response()->json(['message' => 'Data berhasil disimpan'], 200);
+            return redirect()->back()->with('success', 'Berhasil Update Data');
         }else{
-            return response()->json(['error' => 'Data berhasil disimpan'], 400);
+            return redirect()->back()->with('error', 'Gagal Update Data');
         }
 
 

@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('pendidikans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
             $table->string('nama_pendidikan')->nullable();
             $table->string('institusi')->nullable();
             $table->string('jurusan')->nullable();
             $table->integer('tahun')->nullable();
             $table->float('ipk')->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

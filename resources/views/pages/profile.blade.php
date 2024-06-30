@@ -9,21 +9,21 @@
         <div class="row">
             <!-- Basic -->
             <div class="col-md">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
                 <div class="card mb-6">
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif
                     <h5 class="card-header">Informasi Pribadi</h5>
                     <div class="card-body demo-vertical-spacing demo-only-element">
 
@@ -49,52 +49,77 @@
                             <label for="defaultSelect" class="form-label mt-4">Jenis Kelamin</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Laki-Laki">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Laki-Laki" {{ auth()->user()->jenkel == 'Laki-Laki' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Perempuan">
+                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Perempuan" {{ auth()->user()->jenkel == 'Perempuan' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                             </div>
 
                         </div>
                         <div class="input-group">
-                            <label class="form-label  mt-4" for="basic-default-password32">Agama</label>
-                            <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                                <option selected="">Pilih</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Katholik">Katholik</option>
-                                <option value="Kristen Protestan">Kristen Protestan</option>
-                                <option value="Buddha">Buddha</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Konghucu">Konghucu</option>
+                            <label class="form-label mt-4" for="agama">Agama</label>
+                            <select class="form-select" id="agama" name="agama" aria-label="Default select example">
+                                <option value="">Pilih</option>
+                                <option value="Islam" {{ auth()->user()->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="Katholik" {{ auth()->user()->agama == 'Katholik' ? 'selected' : '' }}>Katholik</option>
+                                <option value="Kristen Protestan" {{ auth()->user()->agama == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                                <option value="Buddha" {{ auth()->user()->agama == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                <option value="Hindu" {{ auth()->user()->agama == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                <option value="Konghucu" {{ auth()->user()->agama == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                             </select>
                         </div>
                         <div class="input-group">
-                            <label class="form-label  mt-4" for="basic-default-password32">Goldar</label>
-                            <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                                <option selected="">Pilih</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="AB">AB</option>
-                                <option value="O">O</option>
+                            <label class="form-label mt-4" for="goldar">Goldar</label>
+                            <select class="form-select" id="goldar" name="goldar" aria-label="Default select example">
+                                <option value="">Pilih</option>
+                                <option value="A" {{ auth()->user()->goldar == 'A' ? 'selected' : '' }}>A</option>
+                                <option value="B" {{ auth()->user()->goldar == 'B' ? 'selected' : '' }}>B</option>
+                                <option value="AB" {{ auth()->user()->goldar == 'AB' ? 'selected' : '' }}>AB</option>
+                                <option value="O" {{ auth()->user()->goldar == 'O' ? 'selected' : '' }}>O</option>
                             </select>
                         </div>
                         <div>
                             <label for="alamatktp" class="form-label mt-4">Alamat KTP</label>
-                            <textarea class="form-control" id="alamatktp" rows="3"></textarea>
+                            <textarea class="form-control" id="alamatktp" name="alamatktp" rows="3">{{ auth()->user()->alamat_ktp }}</textarea>
                         </div>
                         <div>
                             <label for="alamattinggal" class="form-label mt-4">Alamat Tinggal</label>
-                            <textarea class="form-control" id="alamattinggal" rows="3"></textarea>
+                            <textarea class="form-control" id="alamattinggal" name="alamattinggal" rows="3">{{ auth()->user()->alamat_tinggal }}</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label mt-4" for="basic-default-password32">No. Telp</label>
+                            <input type="text" class="form-control"  aria-describedby="basic-addon13" id="notelpon" name="notelpon" value="{{ auth()->user()->notelpon }}">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label mt-4">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" value="{{ auth()->user()->email }}">
                         </div>
                         <div class="input-group">
-                            <label class="form-label mt-4" for="basic-default-password32">Orang Terdekat Yang Dapat Dihubungi</label>
-                            <input type="text" class="form-control"  aria-describedby="basic-addon13">
+                            <label class="form-label mt-4" for="basic-default-password32">No Orang Terdekat Yang Dapat Dihubungi</label>
+                            <input type="text" class="form-control" name="orgtrdkt"  aria-describedby="basic-addon13" value="{{ auth()->user()->notelpon_tdkt }}">
+                        </div>
+                        <div>
+                            <label for="skill" class="form-label mt-4">Skill</label>
+                            <textarea class="form-control" id="skill" name="skill" rows="3">{{ auth()->user()->skill }}</textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="defaultSelect" class="form-label mt-4">Bersedia ditempatkan di seluruh kantor perusahaan</label>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="persetujuan" id="inlineRadio1" value="Ya" {{ auth()->user()->persetujuan == 'Ya' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="inlineRadio1">Ya</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="persetujuan" id="inlineRadio2" value="Tidak" {{ auth()->user()->persetujuan == 'Tidak' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                            </div>
+
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label mt-4" for="basic-default-password32">Penghasilan yang diharapkan</label>
+                            <input type="text" class="form-control" name="penghasilan"  aria-describedby="basic-addon13" value="{{ auth()->user()->penghasilan }}">
                         </div>
 
 

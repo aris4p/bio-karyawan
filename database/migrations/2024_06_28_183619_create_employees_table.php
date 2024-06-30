@@ -28,9 +28,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('notelpon', 15)->nullable();
             $table->string('notelpon_tdkt', 15)->nullable(); //no telpon terdekat
-            $table->string('id_pendidikan')->nullable();
-            $table->string('id_pelatihan')->nullable();
-            $table->string('id_pekerjaan')->nullable();
             $table->string('skill')->nullable();
             $table->enum('persetujuan', ['Ya', 'Tidak'])->nullable();
             $table->string('penghasilan')->nullable();
