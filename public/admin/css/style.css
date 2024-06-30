@@ -59,6 +59,11 @@ h6 {
     margin-bottom: 10px;
 }
 
+.d-flex {
+    display: flex;
+    gap: 0.5rem; /* Spasi antara dua input */
+}
+
 .pagetitle h1 {
     font-size: 24px;
     margin-bottom: 0;

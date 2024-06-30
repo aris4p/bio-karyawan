@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
+
+
     public function index(){
         return view('pages.profile',[
             'title' => "Informasi Pribadi"
         ]);
     }
+    public function profile_e(){
+        return view('pages.profile_e',[
+            'title' => "Informasi Pribadi"
+        ]);
+    }
 
-    public function store(Request $request){
+    public function profile_store(Request $request){
 
 
         $validate = $request->validate([
@@ -26,7 +35,7 @@ class EmployeeController extends Controller
         ]);
 
         $employee = Employee::where('email', $request->email)->first();
-        if($employee){
+        if ($employee) {
             $employee->posisi = $request->posisi;
             $employee->nama = $request->nama;
             $employee->noktp = $request->noktp;
@@ -44,12 +53,28 @@ class EmployeeController extends Controller
             $employee->persetujuan = $request->persetujuan;
             $employee->penghasilan = $request->penghasilan;
             $employee->save();
+
+            // Mengambil atau membuat pendidikan baru
+            $pendidikan = Pendidikan::firstOrNew(['employee_id' => $employee->id]);
+            $pendidikan->nama_pendidikan = $request->jenjang;
+            $pendidikan->institusi = $request->institusi;
+            $pendidikan->jurusan = $request->jurusan;
+            $pendidikan->tahun = $request->tahun;
+            $pendidikan->ipk = $request->ipk;
+            $pendidikan->save();
+
             return redirect()->back()->with('success', 'Berhasil Update Data');
-        }else{
-            return redirect()->back()->with('error', 'Gagal Update Data');
+        } else {
+            return redirect()->back()->with('error', 'Gagal Update Data: Employee tidak ditemukan');
         }
 
 
 
+
+
     }
+
+
+
+
 }

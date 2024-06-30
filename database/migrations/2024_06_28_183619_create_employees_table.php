@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('nama', 50)->nullable();
             $table->string('noktp', 16)->nullable();
             $table->string('tempat', 50)->nullable(); //tempat
-            $table->date('tgllahir', 50)->nullable(); // tanggal lahir
-            $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable(); // jenis kelamin
+            $table->date('tgllahir')->nullable(); // tanggal lahir
+            $table->enum('jenkel', ['Laki-Laki','Perempuan'])->nullable(); // jenis kelamin
             $table->string('agama', 25)->nullable();
             $table->string('goldar', 2)->nullable();
             $table->string('status', 20)->nullable();
-            $table->string('alamat_ktp', 100)->nullable();
-            $table->string('alamat_tinggal', 100)->nullable();
+            $table->string('alamat_ktp', 255)->nullable();
+            $table->string('alamat_tinggal', 255)->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('notelpon', 15)->nullable();

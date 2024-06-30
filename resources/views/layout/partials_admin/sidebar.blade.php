@@ -23,6 +23,16 @@
                         <i class="bi bi-circle"></i><span>Informasi Pribadi</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('pekerjaan') }}">
+                        <i class="bi bi-circle"></i><span>Riwayat Pekerjaan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('pelatihan') }}">
+                        <i class="bi bi-circle"></i><span>Riwayat Pelatihan</span>
+                    </a>
+                </li>
             </ul>
 
             <li class="menu-header small text-uppercase">

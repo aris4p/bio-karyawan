@@ -10,14 +10,14 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
-    
+
     <!-- Favicons -->
     <link href="{{ asset('admin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    
+
     <!-- Google Fonts -->
     <link href="//fonts.gstatic.com" rel="preconnect">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('admin/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
@@ -35,31 +35,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    
+
     <!-- Template Main CSS File -->
     <link href="{{ asset('admin/css/style.css')}}" rel="stylesheet">
+
 </head>
 <body>
-    
-    
+
+
     @include('layout.partials_admin.header')
     @include('layout.partials_admin.sidebar')
-    
+
     <main id="main" class="main">
         @yield('body')
     </main><!-- End #main -->
     @include('layout.partials_admin.footer')
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
     <!-- Vendor JS Files -->
-    
+
     <script src="{{ asset ('admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{ asset ('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset ('admin/vendor/chart.js/chart.min.js')}}"></script>
@@ -68,11 +69,11 @@
     <script src="{{ asset ('admin/vendor/simple-datatables/simple-datatables.js')}}"></script>
     <script src="{{ asset ('admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset ('admin/vendor/php-email-form/validate.js')}}"></script>
-    
-    
+
+
     <!-- Template Main JS File -->
     <script src="{{ asset ('admin/js/main.js')}}"></script>
-    
-    
+
+
 </body>
 </html>
