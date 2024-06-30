@@ -14,6 +14,19 @@
 
 
         <li class="nav-item">
+            @if (auth()->user()->isAdmin == 1)
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Daftar Kandidat</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('data') }}">
+                        <i class="bi bi-circle"></i><span>Data Kandidat</span>
+                    </a>
+                </li>
+
+            </ul>
+            @else
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Profil Kandidat</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -34,6 +47,9 @@
                     </a>
                 </li>
             </ul>
+            @endif
+
+
 
         </li><!-- End Components Nav -->
 

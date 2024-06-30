@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Middleware\CheckProfile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PelatihanController;
-use App\Http\Controllers\RegisterController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'login'])->name('login');
@@ -18,7 +19,14 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(CheckProfile::class);
+    Route::get('/data_kandidat', [DashboardController::class, 'data'])->name('data');
+    Route::get('/kandidat/{id}', [DashboardController::class, 'kandidat'])->name('kandidat');
+    Route::get('/kandidat/{id}/edit', [DashboardController::class, 'kandidat_edit'])->name('kandidat-edit');
+    Route::get('/kandidat/hapus/{id}', [DashboardController::class, 'kandidat_hapus'])->name('kandidat-hapus');
+
+
+
 
     Route::get('/profile', [EmployeeController::class, 'index'])->name('profile');
     Route::get('/profile_e', [EmployeeController::class, 'profile_e'])->name('profile-edit');
@@ -37,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/pelatihan/{id}/edit', [PelatihanController::class, 'pelatihan_edit'])->name('pelatihan-edit');
     Route::put('/pelatihan/{id}', [PelatihanController::class, 'pelatihan_update'])->name('pelatihan-update');
     Route::delete('/pelatihan_hapus/{id}', [PelatihanController::class, 'pelatihan_destroy'])->name('pelatihan-destroy');
+
+
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

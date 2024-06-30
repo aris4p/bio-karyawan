@@ -20,7 +20,8 @@ class RegisterController extends Controller
 
         $data = [
             'email' => $request->email,
-            'password' =>  Hash::make($request->password)
+            'password' =>  Hash::make($request->password),
+            'isAdmin' => '0',
         ];
 
         $employee = Employee::create($data);

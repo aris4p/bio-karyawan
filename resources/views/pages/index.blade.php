@@ -15,8 +15,11 @@
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Selamat Datang</h5>
-
+                @if (auth()->user()->isAdmin == 1)
+                <h5 class="card-title">Selamat Datang Admin</h5>
+                @else
+                <h5 class="card-title">Selamat Datang, pengguna</h5>
+                @endif
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>

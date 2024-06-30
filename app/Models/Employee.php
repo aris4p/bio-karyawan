@@ -12,6 +12,8 @@ class Employee extends Authenticatable
     protected $fillable = ['email', 'password',];
     protected $hidden = ['password', 'remember_token'];
 
+    protected $appends = ['tempat_tgllahir'];
+
     public function pekerjaan(){
         return $this->hasMany(Pekerjaan::class);
     }
@@ -20,5 +22,10 @@ class Employee extends Authenticatable
     }
     public function pelatihan(){
         return $this->hasMany(Pelatihan::class);
+    }
+
+    public function getTempatTgllahirAttribute()
+    {
+        return $this->tempat . ', ' . $this->tgllahir;
     }
 }

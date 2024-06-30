@@ -29,7 +29,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             //mengembalikan ke halaman dashboard
-            return redirect()->intended('profile');
+            return redirect()->intended('dashboard');
         }
         Log::warning('Login failed for user: ', ['email' => $credentials['email']]);
 
