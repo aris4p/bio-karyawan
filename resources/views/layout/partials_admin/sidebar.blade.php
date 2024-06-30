@@ -15,16 +15,16 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Karyawan</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Profil Kandidat</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('karyawan') }}">
-                        <i class="bi bi-circle"></i><span>Daftar Karyawan</span>
+                    <a href="{{ route('profile') }}">
+                        <i class="bi bi-circle"></i><span>Informasi Pribadi</span>
                     </a>
                 </li>
             </ul>
-           
+
             <li class="menu-header small text-uppercase">
                 <hr>
             </li>
@@ -33,7 +33,7 @@
             </a>
             <ul id="components-akun" class="nav-content collapse " data-bs-parent="#sidebar-akun">
                 <li>
-                    <a href="{{ route('changepassword') }}">
+                    <a href="">
                         <i class="bi bi-circle"></i><span>Ganti Password</span>
                     </a>
                 </li>

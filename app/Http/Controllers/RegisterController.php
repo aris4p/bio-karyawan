@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -19,7 +20,7 @@ class RegisterController extends Controller
 
         $data = [
             'email' => $request->email,
-            'password' => bcrypt($request->email)
+            'password' =>  Hash::make($request->password)
         ];
 
         $employee = Employee::create($data);

@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
           <img src="{{ asset('admin/img/logo.png') }}" alt="">
-          <span class="d-none d-lg-block justify">Manajemen Karyawan</span>
+          <span class="d-none d-lg-block justify">Biodata Calon Karyawan</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
   </div><!-- End Logo -->
@@ -33,13 +33,13 @@
                   @else
                       <img src="{{ asset('admin/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
                   @endauth
-                  <span class="d-none d-md-block dropdown-toggle ps-2">@auth {{ Auth()->user()->name }} @else Tamu @endauth</span>
+                  <span class="d-none d-md-block dropdown-toggle ps-2">@auth {{ Auth()->user()->email }} @else Tamu @endauth</span>
               </a><!-- End Profile Iamge Icon -->
 
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" aria-labelledby="dropdownMenuLink">
                   <li class="dropdown-header">
                       @auth
-                          <h6>{{ auth()->user()->name }}</h6>
+                          <h6>{{ auth()->user()->email }}</h6>
                       @else
                           <h6>Tamu</h6>
                       @endauth

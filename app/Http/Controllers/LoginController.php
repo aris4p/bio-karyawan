@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -19,13 +20,18 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        // Log kredensial untuk debugging
+        Log::info('Attempting login with:', $credentials);
+
+
         //check jika login berhasil
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             //mengembalikan ke halaman dashboard
-            return redirect()->intended('dashboard');
+            return redirect()->intended('profile');
         }
+        Log::warning('Login failed for user: ', ['email' => $credentials['email']]);
 
         //jika gagal
         return back()->withErrors([

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('posisi', 50)->nullable();
             $table->string('nama', 50)->nullable();
             $table->string('noktp', 16)->nullable();
-            $table->string('tempattgllahir', 50)->nullable(); //tempat tanggal lahir
+            $table->string('tempat', 50)->nullable(); //tempat
+            $table->date('tgllahir', 50)->nullable(); // tanggal lahir
             $table->enum('jenkel', ['Laki-Laki', 'Perempuan'])->nullable(); // jenis kelamin
             $table->string('agama', 25)->nullable();
             $table->string('goldar', 2)->nullable();
