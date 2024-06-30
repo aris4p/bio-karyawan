@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('notelpon_tdkt', 15)->nullable(); //no telpon terdekat
             $table->string('skill')->nullable();
             $table->enum('persetujuan', ['Ya', 'Tidak'])->nullable();
+            $table->enum('isAdmin', [0, 1])->nullable();
             $table->string('penghasilan')->nullable();
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PekerjaanController;
+use App\Http\Controllers\PelatihanController;
 use App\Http\Controllers\RegisterController;
 
 Route::middleware('guest')->group(function () {
@@ -30,7 +31,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/pekerjaan', [PekerjaanController::class, 'pekerjaan_store'])->name('pekerjaan-simpan');
     Route::delete('/pekerjaan_hapus/{id}', [PekerjaanController::class, 'pekerjaan_hapus'])->name('pekerjaan-destroy');
 
-    Route::get('/pelatihan', [EmployeeController::class, 'index'])->name('pelatihan');
+    Route::get('/pelatihan', [PelatihanController::class, 'index'])->name('pelatihan');
+    Route::post('/pelatihan', [PelatihanController::class, 'pelatihan_store'])->name('pelatihan-simpan');
+    Route::get('/pelatihan_e', [PelatihanController::class, 'pelatihan_e'])->name('pelatihan-tambah');
+    Route::get('/pelatihan/{id}/edit', [PelatihanController::class, 'pelatihan_edit'])->name('pelatihan-edit');
+    Route::put('/pelatihan/{id}', [PelatihanController::class, 'pelatihan_update'])->name('pelatihan-update');
+    Route::delete('/pelatihan_hapus/{id}', [PelatihanController::class, 'pelatihan_destroy'])->name('pelatihan-destroy');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

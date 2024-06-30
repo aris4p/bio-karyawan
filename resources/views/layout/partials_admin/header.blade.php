@@ -28,10 +28,10 @@
                       @if (Auth()->user()->foto)
                           <img src="{{ asset('images/'.auth()->user()->foto) }}" alt="Profile" class="w-px-40 h-auto rounded-circle">
                       @else
-                          <img src="{{ asset('admin/img/akun.webp')}}" alt="Profile" class="rounded-circle">
+                          <img src="{{ asset('images/catty.jpeg')}}" alt="Profile" class="rounded-circle">
                       @endif
                   @else
-                      <img src="{{ asset('admin/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                      <img src="{{ asset('images/catty.jpeg') }}" alt="Profile" class="rounded-circle">
                   @endauth
                   <span class="d-none d-md-block dropdown-toggle ps-2">@auth {{ Auth()->user()->email }} @else Tamu @endauth</span>
               </a><!-- End Profile Iamge Icon -->

@@ -11,9 +11,10 @@ class PekerjaanController extends Controller
 {
     //pekerjaan
     public function pekerjaan(){
+        $pekerjaan = Pekerjaan::where('employee_id', Auth::user()->id)->get();
         return view('pages.pekerjaan',[
             'title' => "Pekerjaan"
-        ]);
+        ],compact('pekerjaan'));
     }
     public function pekerjaan_e(){
         return view('pages.pekerjaan_e',[
