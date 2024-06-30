@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Authenticatable
 {
     use HasFactory;
-    protected $fillable = ['email', 'password',];
+    protected $fillable = ['email', 'password','isAdmin'];
     protected $hidden = ['password', 'remember_token'];
 
     protected $appends = ['tempat_tgllahir'];

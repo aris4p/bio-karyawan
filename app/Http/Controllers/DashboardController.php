@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Pekerjaan;
+use App\Models\Pelatihan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -61,5 +63,19 @@ class DashboardController extends Controller
         $user->delete();
 
         return redirect()->route('data')->with('success', 'Kandidat Berhasil di hapus.');
+    }
+    public function kandidat_hapus_pekerjaan(Request $request,$id){
+        $user = Pekerjaan::findOrFail($id);
+
+        $user->delete();
+
+        return redirect()->route('kandidat', $request->id)->with('success','Pekerjaan Berhasil di hapus.');
+    }
+    public function kandidat_hapus_pelatihan(Request $request,$id){
+        $user = Pelatihan::findOrFail($id);
+
+        $user->delete();
+
+        return redirect()->route('kandidat', $request->id)->with('success','Pelatihan Berhasil di hapus.');
     }
 }

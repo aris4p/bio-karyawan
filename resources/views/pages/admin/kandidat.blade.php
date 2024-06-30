@@ -193,9 +193,10 @@
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end mt-3">
                                         <a href="{{ route('pekerjaan-edit', $pekerjaan->id) }}" class="btn btn-primary me-2">Edit</a>
-                                        <form method="POST" action="{{ route('pekerjaan-destroy', $pekerjaan->id) }}" style="display: inline;">
+                                        <form method="POST" action="{{ route('kandidat-hapus-pekerjaan', $pekerjaan->id) }}" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $kandidat->id }}">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pekerjaan ini?')">Hapus</button>
                                         </form>
                                     </div>
@@ -240,9 +241,10 @@
                                     </div>
                                     <div class="col-md-12 d-flex justify-content-end mt-3">
                                         <a href="{{ route('pelatihan-edit', $pelatihan->id) }}" class="btn btn-primary me-2">Edit</a>
-                                        <form method="POST" action="{{ route('pelatihan-destroy', $pelatihan->id) }}" style="display: inline;">
+                                        <form method="POST" action="{{ route('kandidat-hapus-pelatihan', $pelatihan->id) }}" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
+                                            <input type="hidden" name="id" value="{{ $kandidat->id }}">
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pelatihan ini?')">Hapus</button>
                                         </form>
                                     </div>

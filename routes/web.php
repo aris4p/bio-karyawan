@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/kandidat/{id}', [DashboardController::class, 'kandidat'])->name('kandidat');
     Route::get('/kandidat/{id}/edit', [DashboardController::class, 'kandidat_edit'])->name('kandidat-edit');
     Route::get('/kandidat/hapus/{id}', [DashboardController::class, 'kandidat_hapus'])->name('kandidat-hapus');
+    Route::delete('/kandidat/hapus/{id}', [DashboardController::class, 'kandidat_hapus_pekerjaan'])->name('kandidat-hapus-pekerjaan');
+    Route::delete('/kandidat/hapus/pelatihan/{id}', [DashboardController::class, 'kandidat_hapus_pelatihan'])->name('kandidat-hapus-pelatihan');
 
 
 
